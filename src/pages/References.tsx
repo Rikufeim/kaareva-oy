@@ -1,6 +1,4 @@
-import { ArrowRight } from "lucide-react";
-import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
+import { HoverButton } from "@/components/ui/hover-button";
 import Layout from "@/components/layout/Layout";
 import ref1 from "@/assets/ref-1.jpg";
 import ref2 from "@/assets/ref-2.jpg";
@@ -41,9 +39,8 @@ const projects = [
 const References = () => {
   return (
     <Layout>
-      <section className="section-padding bg-section-alt">
+      <section className="page-hero-padding bg-section-alt">
         <div className="container-narrow text-center">
-          <p className="text-primary font-semibold tracking-wider uppercase text-sm mb-3">Referenssit</p>
           <h1 className="text-4xl md:text-5xl font-display font-bold mb-6">
             Työmme puhuvat <span className="text-gradient">puolestaan</span>
           </h1>
@@ -86,12 +83,17 @@ const References = () => {
           <p className="text-muted-foreground text-lg max-w-xl mx-auto mb-8">
             Ota yhteyttä, niin keskustellaan projektistasi.
           </p>
-          <Link to="/yhteystiedot">
-            <Button variant="hero" size="xl">
-              Ota yhteyttä
-              <ArrowRight className="w-5 h-5" />
-            </Button>
-          </Link>
+          <HoverButton
+            to="/yhteystiedot"
+            size="xl"
+            backgroundColor="#000000"
+            textColor="#ffffff"
+            hoverTextColor="#ffffff"
+            glowColor="rgba(0,0,0,0.5)"
+            redCornerAccent
+          >
+            Ota yhteyttä
+          </HoverButton>
         </div>
       </section>
     </Layout>

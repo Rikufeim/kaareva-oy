@@ -1,10 +1,13 @@
 import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { Phone, CheckCircle, ArrowRight, Home, Wrench, Users, Clock, Shield, Star, HelpCircle } from "lucide-react";
+import { HoverButton } from "@/components/ui/hover-button";
+import { GradientCardShowcase, type CardItem } from "@/components/ui/gradient-card-showcase";
+import { FeatureCard } from "@/components/ui/feature-card";
+import { Phone, HelpCircle } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import heroBg from "@/assets/hero-bg.jpg";
 import ref1 from "@/assets/ref-1.jpg";
 import ref2 from "@/assets/ref-2.jpg";
+import ref3 from "@/assets/ref-3.jpg";
 import {
   Accordion,
   AccordionContent,
@@ -19,39 +22,27 @@ const stats = [
   { value: "100%", label: "omistautumista" },
 ];
 
-const usps = [
+const uspCards: CardItem[] = [
   {
-    icon: Clock,
     title: "15 vuoden kokemus",
     desc: "Olemme rakentaneet uusmaalaisille perheille laadukkaita koteja jo yli vuosikymmenen ajan.",
+    gradientFrom: "#0a0a0a",
+    gradientTo: "#171717",
+    href: "/palvelut",
   },
   {
-    icon: Shield,
     title: "Luotettava kumppani",
-    desc: "106 tyytyväistä asiakasta kertovat puolestaan – pidämme lupauksemme ja aikataulumme.",
+    desc: "106 tyytyväistä asiakasta kertoo puolestaan – pidämme lupauksemme ja aikataulumme.",
+    gradientFrom: "#0a0a0a",
+    gradientTo: "#262626",
+    href: "/palvelut",
   },
   {
-    icon: Star,
     title: "Räätälöity laatu",
     desc: "Jokainen kohde suunnitellaan ja toteutetaan juuri sinun toiveidesi ja tarpeidesi mukaan.",
-  },
-];
-
-const steps = [
-  {
-    num: "01",
-    title: "Suunnittelu",
-    desc: "Tapaamme ja kartoitamme toiveesi. Laadimme yhdessä suunnitelman, aikataulun ja budjetin.",
-  },
-  {
-    num: "02",
-    title: "Rakentaminen",
-    desc: "Ammattilaistiimimme toteuttaa kohteen sovitun mukaisesti – sinä pysyt ajan tasalla koko ajan.",
-  },
-  {
-    num: "03",
-    title: "Luovutus",
-    desc: "Tarkastamme kohteen yhdessä, varmistamme laatutason ja luovutamme avaimet käteesi.",
+    gradientFrom: "#171717",
+    gradientTo: "#262626",
+    href: "/palvelut",
   },
 ];
 
@@ -78,7 +69,7 @@ const Index = () => {
   return (
     <Layout>
       {/* Hero */}
-      <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-screen flex items-start justify-start overflow-hidden pt-48 md:pt-56 lg:pt-64">
         <img
           src={heroBg}
           alt="Moderni suomalainen omakotitalo luonnon keskellä"
@@ -86,28 +77,39 @@ const Index = () => {
           loading="eager"
         />
         <div className="absolute inset-0" style={{ background: "var(--hero-overlay)" }} />
-        <div className="relative z-10 container-narrow px-4 md:px-8 text-center">
-          <p className="text-primary font-semibold tracking-wider uppercase text-sm mb-4 animate-fade-in">
-            Rakennusliike Nurmijärvi
-          </p>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold text-foreground leading-tight mb-6 animate-fade-in" style={{ animationDelay: "0.15s" }}>
-            Rakennamme unelmiesi kodin <span className="text-gradient">ammattitaidolla</span>
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: "linear-gradient(to right, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.15) 40%, transparent 70%)",
+          }}
+        />
+        <div className="relative z-10 container-narrow px-4 md:px-8 text-left ml-4 md:ml-8 mr-auto">
+          <h1 className="text-2xl md:text-4xl lg:text-5xl font-display font-bold text-foreground leading-tight mb-4 animate-fade-in" style={{ animationDelay: "0.15s" }}>
+            <span>Rakennamme unelmiesi kodin</span>
+            <br />
+            <span className="bg-black/90 px-3 py-1 rounded-xl inline-block text-white align-middle mt-1">ammattitaidolla</span>
           </h1>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 animate-fade-in" style={{ animationDelay: "0.3s" }}>
+          <p className="text-base md:text-lg text-foreground/95 max-w-xl mb-6 animate-fade-in leading-relaxed drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]" style={{ animationDelay: "0.3s" }}>
             Kaareva Oy on luotettava rakennuskumppanisi Uudellamaalla. Räätälöityjä omakotitaloja ja laadukkaita remontteja 15 vuoden kokemuksella.
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in" style={{ animationDelay: "0.45s" }}>
-            <Link to="/yhteystiedot">
-              <Button variant="hero" size="xl">
-                Pyydä tarjous
-                <ArrowRight className="w-5 h-5" />
-              </Button>
-            </Link>
-            <a href="tel:+358401234567">
-              <Button variant="heroOutline" size="xl">
-                <Phone className="w-5 h-5" />
-                Soita meille
-              </Button>
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 animate-fade-in" style={{ animationDelay: "0.45s" }}>
+            <HoverButton
+              to="/yhteystiedot"
+              size="xl"
+              backgroundColor="#000000"
+              textColor="#ffffff"
+              hoverTextColor="#ffffff"
+              glowColor="rgba(0,0,0,0.5)"
+              redCornerAccent
+            >
+              Pyydä tarjous
+            </HoverButton>
+            <a
+              href="tel:+358401234567"
+              className="inline-flex items-center gap-2 text-base font-medium text-foreground/95 hover:text-primary transition-colors"
+            >
+              <Phone className="w-4 h-4 shrink-0" />
+              Soita meille
             </a>
           </div>
         </div>
@@ -115,9 +117,9 @@ const Index = () => {
 
       {/* Stats bar */}
       <section className="bg-primary">
-        <div className="container-narrow px-4 md:px-8 py-8 grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div className="container-narrow px-4 md:px-8 py-8 grid grid-cols-2 md:grid-cols-4 gap-6 ml-auto mr-4 md:mr-8">
           {stats.map((s) => (
-            <div key={s.label} className="text-center">
+            <div key={s.label} className="text-right">
               <div className="text-3xl md:text-4xl font-bold text-primary-foreground font-display">{s.value}</div>
               <div className="text-primary-foreground/80 text-sm mt-1">{s.label}</div>
             </div>
@@ -127,77 +129,55 @@ const Index = () => {
 
       {/* USPs */}
       <section className="section-padding">
-        <div className="container-narrow">
-          <p className="text-primary font-semibold tracking-wider uppercase text-sm text-center mb-3">Miksi valita meidät</p>
-          <h2 className="text-3xl md:text-4xl font-display font-bold text-center mb-14">
+        <div className="container-narrow text-left">
+          <h2 className="text-3xl md:text-4xl font-display font-bold mb-14">
             Kokemus, laatu ja luotettavuus
           </h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            {usps.map((u) => (
-              <div key={u.title} className="bg-card border border-border rounded-xl p-8 hover:border-primary/40 transition-colors">
-                <u.icon className="w-10 h-10 text-primary mb-5" />
-                <h3 className="text-xl font-bold font-display mb-3">{u.title}</h3>
-                <p className="text-muted-foreground leading-relaxed">{u.desc}</p>
-              </div>
-            ))}
-          </div>
+          <GradientCardShowcase cards={uspCards} />
         </div>
       </section>
 
-      {/* Services overview */}
+      {/* Services overview - Feature 108 style */}
       <section className="section-padding bg-section-alt">
         <div className="container-narrow">
-          <p className="text-primary font-semibold tracking-wider uppercase text-sm text-center mb-3">Palvelumme</p>
-          <h2 className="text-3xl md:text-4xl font-display font-bold text-center mb-14">
+          <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground text-center mb-16">
             Kattavaa rakennusosaamista
           </h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-card border border-border rounded-xl p-8 md:p-10 group hover:border-primary/40 transition-colors">
-              <Home className="w-12 h-12 text-primary mb-5" />
-              <h3 className="text-2xl font-bold font-display mb-4">Uudisrakentaminen</h3>
-              <p className="text-muted-foreground leading-relaxed mb-5">
-                Rakennamme unelmiesi omakotitalon avaimet käteen -periaatteella. Yhteistyökumppanimme Jetta-Talon kanssa löydämme juuri sinulle sopivan ratkaisun.
-              </p>
-              <ul className="space-y-2 text-sm text-muted-foreground mb-6">
-                {["Räätälöity suunnittelu", "Projektointi ja aikataulutus", "Laadukkaat materiaalit", "Avaimet käteen"].map((i) => (
-                  <li key={i} className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-primary shrink-0" /> {i}
-                  </li>
-                ))}
-              </ul>
-              <Link to="/palvelut" className="text-primary font-semibold text-sm inline-flex items-center gap-1 hover:gap-2 transition-all">
-                Lue lisää <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
-            <div className="bg-card border border-border rounded-xl p-8 md:p-10 group hover:border-primary/40 transition-colors">
-              <Wrench className="w-12 h-12 text-primary mb-5" />
-              <h3 className="text-2xl font-bold font-display mb-4">Korjausrakentaminen</h3>
-              <p className="text-muted-foreground leading-relaxed mb-5">
-                Toteutamme remontit ammattitaidolla – keittiöremontista kokonaisiin peruskorjauksiin. Jokainen remontti on meille yhtä tärkeä.
-              </p>
-              <ul className="space-y-2 text-sm text-muted-foreground mb-6">
-                {["Peruskorjaukset", "Kylpyhuone- ja keittiöremontit", "Laajennukset ja muutostyöt", "Energiaremontit"].map((i) => (
-                  <li key={i} className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-primary shrink-0" /> {i}
-                  </li>
-                ))}
-              </ul>
-              <Link to="/palvelut" className="text-primary font-semibold text-sm inline-flex items-center gap-1 hover:gap-2 transition-all">
-                Lue lisää <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
+          <div className="space-y-20 md:space-y-28">
+            <FeatureCard
+              label="Avaimet käteen"
+              title="Rakennamme unelmiesi omakotitalon."
+              description="Räätälöity suunnittelu, projektointi ja aikataulutus – yhteistyökumppanimme Jetta-Talon kanssa löydämme juuri sinulle sopivan ratkaisun. Laadukkaat materiaalit ja huolellinen toteutus joka askeleella."
+              buttonText="Lue lisää"
+              to="/palvelut"
+              graphic="house"
+            />
+            <FeatureCard
+              label="Remontit"
+              title="Muunnamme remontit helppoon muotoon."
+              description="Toteutamme remontit ammattitaidolla – keittiöremontista kokonaisiin peruskorjauksiin. Jokainen remontti on meille yhtä tärkeä ja suunnittelemme sen juuri sinun toiveidesi mukaan."
+              buttonText="Lue lisää"
+              to="/palvelut"
+              graphic="renovation"
+              reverse
+            />
           </div>
         </div>
       </section>
 
       {/* References highlight */}
       <section className="section-padding">
-        <div className="container-narrow">
-          <p className="text-primary font-semibold tracking-wider uppercase text-sm text-center mb-3">Referenssit</p>
-          <h2 className="text-3xl md:text-4xl font-display font-bold text-center mb-14">
-            Tutustu kohteisiimme
-          </h2>
-          <div className="grid md:grid-cols-2 gap-6">
+        <div className="container-narrow text-left">
+          <div className="mb-14">
+            <div className="w-12 h-1 bg-primary mb-4" />
+            <h2 className="text-3xl md:text-4xl font-display font-bold mb-2">
+              Kohteita
+            </h2>
+            <p className="text-muted-foreground text-lg">
+              Tutustu referensseihimme.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6">
             <div className="group overflow-hidden rounded-xl border border-border">
               <div className="overflow-hidden">
                 <img
@@ -226,41 +206,45 @@ const Index = () => {
                 <p className="text-muted-foreground text-sm">Tunnelmallinen 120 m² hirsirakenteinen koti luonnonläheisellä tontilla.</p>
               </div>
             </div>
+            <div className="group overflow-hidden rounded-xl border border-border">
+              <div className="overflow-hidden">
+                <img
+                  src={ref3}
+                  alt="Remontoitu keittiö skandinaavisella designilla"
+                  className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+              </div>
+              <div className="p-6 bg-card">
+                <h3 className="font-display font-bold text-lg mb-1">Keittiöremontti, Tuusula</h3>
+                <p className="text-muted-foreground text-sm">Kokonaisvaltainen keittiöremontti vaaleilla kaapeilla ja puutasolla.</p>
+              </div>
+            </div>
           </div>
           <div className="text-center mt-10">
-            <Link to="/referenssit">
-              <Button variant="heroOutline" size="lg">
-                Katso kaikki kohteet
-                <ArrowRight className="w-4 h-4" />
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Process */}
-      <section className="section-padding bg-section-alt">
-        <div className="container-narrow">
-          <p className="text-primary font-semibold tracking-wider uppercase text-sm text-center mb-3">Näin toimimme</p>
-          <h2 className="text-3xl md:text-4xl font-display font-bold text-center mb-14">
-            Kolme askelta unelmiesi kotiin
-          </h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            {steps.map((s) => (
-              <div key={s.num} className="text-center">
-                <div className="text-5xl font-display font-bold text-primary/20 mb-4">{s.num}</div>
-                <h3 className="text-xl font-display font-bold mb-3">{s.title}</h3>
-                <p className="text-muted-foreground leading-relaxed">{s.desc}</p>
-              </div>
-            ))}
+            <HoverButton
+              to="/referenssit"
+              size="lg"
+              backgroundColor="#000000"
+              textColor="#ffffff"
+              hoverTextColor="#ffffff"
+              glowColor="rgba(0,0,0,0.5)"
+              redCornerAccent
+            >
+              Katso kaikki kohteet
+            </HoverButton>
           </div>
         </div>
       </section>
 
       {/* Partners */}
-      <section className="section-padding">
+      <section
+        className="section-padding"
+        style={{
+          background: "linear-gradient(to bottom, hsl(var(--background)) 0%, hsl(var(--section-alt)) 100%)",
+        }}
+      >
         <div className="container-narrow text-center">
-          <p className="text-primary font-semibold tracking-wider uppercase text-sm mb-3">Yhteistyökumppanimme</p>
           <h2 className="text-3xl md:text-4xl font-display font-bold mb-8">
             Luotettava verkosto
           </h2>
@@ -271,24 +255,22 @@ const Index = () => {
             href="https://www.jetta-talo.fi/"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-card border border-border rounded-xl px-8 py-5 hover:border-primary/40 transition-colors"
+            className="inline-flex items-center px-4 py-2.5 rounded-lg text-sm font-medium text-muted-foreground bg-card border border-border hover:border-primary/40 hover:text-foreground transition-colors"
           >
-            <span className="text-lg font-bold font-display">Jetta-Talo</span>
-            <ArrowRight className="w-4 h-4 text-primary" />
+            Jetta-Talo
           </a>
         </div>
       </section>
 
       {/* FAQ */}
       <section className="section-padding bg-section-alt">
-        <div className="container-narrow max-w-3xl">
-          <p className="text-primary font-semibold tracking-wider uppercase text-sm text-center mb-3">Kysymyksiä?</p>
-          <h2 className="text-3xl md:text-4xl font-display font-bold text-center mb-14">
+        <div className="container-narrow max-w-3xl text-left">
+          <h2 className="text-3xl md:text-4xl font-display font-bold mb-14">
             Usein kysytyt kysymykset
           </h2>
           <Accordion type="single" collapsible className="space-y-3">
             {faqs.map((f, i) => (
-              <AccordionItem key={i} value={`faq-${i}`} className="bg-card border border-border rounded-xl px-6">
+              <AccordionItem key={i} value={`faq-${i}`} className="px-0">
                 <AccordionTrigger className="text-left font-semibold py-5 hover:no-underline">
                   <span className="flex items-center gap-3">
                     <HelpCircle className="w-5 h-5 text-primary shrink-0" />
@@ -314,17 +296,23 @@ const Index = () => {
             Ota yhteyttä ja kerro meille projektistasi – suunnitellaan yhdessä sinulle täydellinen koti.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link to="/yhteystiedot">
-              <Button variant="hero" size="xl">
-                Pyydä tarjous
-                <ArrowRight className="w-5 h-5" />
-              </Button>
-            </Link>
-            <a href="tel:+358401234567">
-              <Button variant="heroOutline" size="xl">
-                <Phone className="w-5 h-5" />
-                040 123 4567
-              </Button>
+            <HoverButton
+              to="/yhteystiedot"
+              size="xl"
+              backgroundColor="#000000"
+              textColor="#ffffff"
+              hoverTextColor="#ffffff"
+              glowColor="rgba(0,0,0,0.5)"
+              redCornerAccent
+            >
+              Pyydä tarjous
+            </HoverButton>
+            <a
+              href="tel:+358401234567"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium text-muted-foreground bg-card border border-border hover:border-primary/40 hover:text-foreground transition-colors"
+            >
+              <Phone className="w-4 h-4 shrink-0" />
+              Soita meille
             </a>
           </div>
         </div>

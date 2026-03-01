@@ -1,7 +1,6 @@
 import { Phone, Mail, MapPin, Clock, HelpCircle } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import ContactForm from "@/components/ContactForm";
-import { Button } from "@/components/ui/button";
 import {
   Accordion,
   AccordionContent,
@@ -27,9 +26,8 @@ const contactFaqs = [
 const Contact = () => {
   return (
     <Layout>
-      <section className="section-padding bg-section-alt">
+      <section className="page-hero-padding bg-section-alt">
         <div className="container-narrow text-center">
-          <p className="text-primary font-semibold tracking-wider uppercase text-sm mb-3">Yhteystiedot</p>
           <h1 className="text-4xl md:text-5xl font-display font-bold mb-6">
             Ota yhteyttä – <span className="text-gradient">olemme täällä sinua varten</span>
           </h1>
@@ -89,25 +87,6 @@ const Contact = () => {
                       <p className="font-semibold">Uusimaa</p>
                     </div>
                   </div>
-                </div>
-              </div>
-
-              {/* Quick actions */}
-              <div className="bg-card border border-border rounded-xl p-6">
-                <h3 className="font-display font-bold mb-4">Nopea yhteydenotto</h3>
-                <div className="flex flex-col gap-3">
-                  <a href="tel:+358401234567">
-                    <Button variant="hero" size="lg" className="w-full">
-                      <Phone className="w-4 h-4" />
-                      Soita nyt
-                    </Button>
-                  </a>
-                  <a href="mailto:info@kaareva.fi">
-                    <Button variant="heroOutline" size="lg" className="w-full">
-                      <Mail className="w-4 h-4" />
-                      Lähetä sähköposti
-                    </Button>
-                  </a>
                 </div>
               </div>
 

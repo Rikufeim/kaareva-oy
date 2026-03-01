@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Phone, Mail, Menu, X, Instagram } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { HoverButton } from "@/components/ui/hover-button";
 import logo from "@/assets/kaareva-logo.png";
 
 const navLinks = [
@@ -14,12 +14,24 @@ const navLinks = [
 
 const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", onScroll);
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <>
+    <div className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out ${scrolled ? "px-4" : "px-0"}`}>
       {/* Top contact bar */}
-      <div className="bg-secondary border-b border-border">
+      <div
+        className={`overflow-hidden transition-all duration-500 ease-out bg-secondary/95 backdrop-blur-sm ${
+          scrolled ? "rounded-t-2xl" : ""
+        }`}
+      >
         <div className="container-narrow flex items-center justify-between py-2 px-4 md:px-8 text-sm">
           <div className="flex items-center gap-4 md:gap-6 text-muted-foreground">
             <a href="tel:+358401234567" className="flex items-center gap-1.5 hover:text-primary transition-colors">
@@ -47,7 +59,11 @@ const Header = () => {
       </div>
 
       {/* Main nav */}
-      <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-md border-b border-border">
+      <header
+        className={`overflow-hidden transition-all duration-500 ease-out ${
+          scrolled ? "rounded-b-2xl bg-background/95 backdrop-blur-md" : "bg-background/95 backdrop-blur-md"
+        }`}
+      >
         <div className="container-narrow flex items-center justify-between py-3 px-4 md:px-8">
           <Link to="/" className="flex items-center gap-2">
             <img src={logo} alt="Kaareva Oy logo" className="h-10 md:h-12 w-auto" />
@@ -61,18 +77,25 @@ const Header = () => {
                 to={link.to}
                 className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
                   location.pathname === link.to
-                    ? "text-primary"
-                    : "text-muted-foreground hover:text-foreground"
+                    ? "text-primary hover:bg-black hover:text-primary"
+                    : "text-muted-foreground hover:bg-black hover:text-white"
                 }`}
               >
                 {link.label}
               </Link>
             ))}
-            <Link to="/yhteystiedot">
-              <Button variant="hero" size="sm" className="ml-2">
-                Ota yhteyttä
-              </Button>
-            </Link>
+            <HoverButton
+              to="/yhteystiedot"
+              size="sm"
+              className="ml-2"
+              backgroundColor="#000000"
+              textColor="#ffffff"
+              hoverTextColor="#ffffff"
+              glowColor="rgba(0,0,0,0.5)"
+              redCornerAccent
+            >
+              Ota yhteyttä
+            </HoverButton>
           </nav>
 
           {/* Mobile toggle */}
@@ -87,28 +110,38 @@ const Header = () => {
 
         {/* Mobile nav */}
         {mobileOpen && (
-          <nav className="lg:hidden bg-background border-t border-border px-4 pb-6 pt-2">
+          <nav className="lg:hidden border-t border-border/20 px-4 pb-6 pt-2 bg-background/95">
             {navLinks.map((link) => (
               <Link
                 key={link.to}
                 to={link.to}
                 onClick={() => setMobileOpen(false)}
-                className={`block py-3 text-base font-medium border-b border-border/50 ${
-                  location.pathname === link.to ? "text-primary" : "text-muted-foreground"
+                className={`block py-3 px-4 -mx-4 text-base font-medium border-b border-border/20 rounded-md transition-colors ${
+                  location.pathname === link.to
+                    ? "text-primary hover:bg-black hover:text-primary"
+                    : "text-muted-foreground hover:bg-black hover:text-white"
                 }`}
               >
                 {link.label}
               </Link>
             ))}
-            <Link to="/yhteystiedot" onClick={() => setMobileOpen(false)}>
-              <Button variant="hero" size="lg" className="w-full mt-4">
-                Ota yhteyttä
-              </Button>
-            </Link>
+            <HoverButton
+              to="/yhteystiedot"
+              size="lg"
+              className="w-full mt-4"
+              onClick={() => setMobileOpen(false)}
+              backgroundColor="#000000"
+              textColor="#ffffff"
+              hoverTextColor="#ffffff"
+              glowColor="rgba(0,0,0,0.5)"
+              redCornerAccent
+            >
+              Ota yhteyttä
+            </HoverButton>
           </nav>
         )}
       </header>
-    </>
+    </div>
   );
 };
 

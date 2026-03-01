@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin, Instagram } from "lucide-react";
+import logo from "@/assets/kaareva-logo.png";
 
 const Footer = () => {
   return (
-    <footer className="bg-secondary border-t border-border">
+    <footer className="bg-section-alt border-t border-border">
       {/* Contact bar */}
       <div className="bg-primary">
         <div className="container-narrow flex flex-col md:flex-row items-center justify-between py-4 px-4 md:px-8 gap-3">
@@ -91,10 +92,15 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="border-t border-border">
+      <div>
         <div className="container-narrow px-4 md:px-8 py-4 flex flex-col md:flex-row items-center justify-between text-xs text-muted-foreground gap-2">
-          <p>© {new Date().getFullYear()} Kaareva Oy. Kaikki oikeudet pidätetään.</p>
-          <p>Y-tunnus: 1234567-8</p>
+          <Link to="/" className="shrink-0">
+            <img src={logo} alt="Kaareva Oy" className="h-6 w-auto" />
+          </Link>
+          <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4">
+            <p>© {new Date().getFullYear()} Kaareva Oy. Kaikki oikeudet pidätetään.</p>
+            <p>Y-tunnus: 1234567-8</p>
+          </div>
         </div>
       </div>
     </footer>

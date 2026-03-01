@@ -1,6 +1,4 @@
-import { ArrowRight, Users } from "lucide-react";
-import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
+import { HoverButton } from "@/components/ui/hover-button";
 import Layout from "@/components/layout/Layout";
 
 const team = [
@@ -27,9 +25,8 @@ const team = [
 const Team = () => {
   return (
     <Layout>
-      <section className="section-padding bg-section-alt">
+      <section className="page-hero-padding bg-section-alt">
         <div className="container-narrow text-center">
-          <p className="text-primary font-semibold tracking-wider uppercase text-sm mb-3">Tiimimme</p>
           <h1 className="text-4xl md:text-5xl font-display font-bold mb-6">
             Kolmen ammattilaisen <span className="text-gradient">tiivis tiimi</span>
           </h1>
@@ -59,7 +56,6 @@ const Team = () => {
       {/* How we work */}
       <section className="section-padding bg-section-alt">
         <div className="container-narrow max-w-3xl text-center">
-          <Users className="w-12 h-12 text-primary mx-auto mb-5" />
           <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">Työskentelytapamme</h2>
           <p className="text-muted-foreground text-lg leading-relaxed mb-6">
             Olemme pieni, ketterä tiimi, jossa jokainen tuntee vastuunsa. Kommunikoimme avoimesti niin keskenämme kuin asiakkaiden kanssa. Emme tee liukuhihnatyötä – jokainen kohde saa kaiken huomiomme.
@@ -67,12 +63,17 @@ const Team = () => {
           <p className="text-muted-foreground text-lg leading-relaxed mb-10">
             Uskomme, että laadukas rakentaminen syntyy ammattitaidon, huolellisuuden ja aidon välittämisen yhdistelmästä. Siksi asiakkaamme palaavat yhä uudelleen.
           </p>
-          <Link to="/yhteystiedot">
-            <Button variant="hero" size="xl">
-              Tutustu ja ota yhteyttä
-              <ArrowRight className="w-5 h-5" />
-            </Button>
-          </Link>
+          <HoverButton
+            to="/yhteystiedot"
+            size="xl"
+            backgroundColor="#000000"
+            textColor="#ffffff"
+            hoverTextColor="#ffffff"
+            glowColor="rgba(0,0,0,0.5)"
+            redCornerAccent
+          >
+            Tutustu ja ota yhteyttä
+          </HoverButton>
         </div>
       </section>
     </Layout>

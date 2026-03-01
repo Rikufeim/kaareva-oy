@@ -15,7 +15,7 @@
     --popover: 0 0% 10%;
     --popover-foreground: 0 0% 96%;
 
-    --primary: 1 78% 53%;
+    --primary: 1 78% 50%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 0 0% 14%;
@@ -32,18 +32,18 @@
 
     --border: 0 0% 20%;
     --input: 0 0% 20%;
-    --ring: 1 78% 53%;
+    --ring: 1 78% 50%;
 
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 9%;
     --sidebar-foreground: 0 0% 96%;
-    --sidebar-primary: 1 78% 53%;
+    --sidebar-primary: 1 78% 50%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 0 0% 14%;
     --sidebar-accent-foreground: 0 0% 96%;
     --sidebar-border: 0 0% 18%;
-    --sidebar-ring: 1 78% 53%;
+    --sidebar-ring: 1 78% 50%;
 
     --hero-overlay: linear-gradient(135deg, hsla(0, 0%, 0%, 0.7) 0%, hsla(0, 0%, 0%, 0.4) 100%);
     --section-alt: 0 0% 5%;
@@ -69,12 +69,16 @@
     @apply py-20 md:py-28 px-4 md:px-8;
   }
 
+  .page-hero-padding {
+    @apply pt-36 md:pt-44 pb-20 md:pb-28 px-4 md:px-8;
+  }
+
   .container-narrow {
     @apply max-w-6xl mx-auto;
   }
 
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-red-400;
+    @apply text-primary;
   }
 
   .bg-section-alt {

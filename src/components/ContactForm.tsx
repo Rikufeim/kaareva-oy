@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
+import { HoverButton } from "@/components/ui/hover-button";
 import { toast } from "sonner";
 
 const ContactForm = () => {
@@ -69,9 +69,9 @@ const ContactForm = () => {
           placeholder="Kerro meille projektistasi..."
         />
       </div>
-      <Button type="submit" variant="hero" size="lg" className="w-full">
+      <HoverButton type="submit" size="lg" className="w-full" backgroundColor="#000000" textColor="#ffffff" hoverTextColor="#ffffff" glowColor="rgba(0,0,0,0.5)" redCornerAccent>
         Lähetä viesti
-      </Button>
+      </HoverButton>
     </form>
   );
 };
