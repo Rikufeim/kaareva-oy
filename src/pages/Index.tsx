@@ -4,7 +4,7 @@ import { GradientCardShowcase, type CardItem } from "@/components/ui/gradient-ca
 import { FeatureCard } from "@/components/ui/feature-card";
 import { Phone, HelpCircle } from "lucide-react";
 import Layout from "@/components/layout/Layout";
-import heroBg from "@/assets/hero-bg.jpg";
+
 import ref1 from "@/assets/ref-1.jpg";
 import ref2 from "@/assets/ref-2.jpg";
 import ref3 from "@/assets/ref-3.jpg";
@@ -69,20 +69,8 @@ const Index = () => {
   return (
     <Layout>
       {/* Hero */}
-      <section className="relative min-h-screen flex items-start justify-start overflow-hidden pt-48 md:pt-56 lg:pt-64">
-        <img
-          src={heroBg}
-          alt="Moderni suomalainen omakotitalo luonnon keskellä"
-          className="absolute inset-0 w-full h-full object-cover"
-          loading="eager"
-        />
-        <div className="absolute inset-0" style={{ background: "var(--hero-overlay)" }} />
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background: "linear-gradient(to right, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.15) 40%, transparent 70%)",
-          }}
-        />
+      <section className="relative min-h-screen flex items-start justify-start overflow-hidden pt-48 md:pt-56 lg:pt-64 bg-muted">
+        <div className="absolute inset-0 bg-muted" />
         <div className="relative z-10 container-narrow px-4 md:px-8 text-left ml-4 md:ml-8 mr-auto">
           <h1 className="text-2xl md:text-4xl lg:text-5xl font-display font-bold text-foreground leading-tight mb-4 animate-fade-in" style={{ animationDelay: "0.15s" }}>
             <span>Rakennamme unelmiesi kodin</span>
