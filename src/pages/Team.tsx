@@ -22,14 +22,14 @@ const Team = () => {
             { name: "Mikko Kaareva", initials: "MK" },
             { name: "Jari Virtanen", initials: "JV" },
             { name: "Timo Lahtinen", initials: "TL" }].
-            map((m) => {}
-
-
-
-
-
-
-            )}
+            map((m) => (
+              <div key={m.name} className="text-center">
+                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-3">
+                  <span className="text-lg font-bold text-primary">{m.initials}</span>
+                </div>
+                <h3 className="font-display font-bold text-lg">{m.name}</h3>
+              </div>
+            ))}
           </div>
         </div>
       </section>
