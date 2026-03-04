@@ -15,7 +15,25 @@ const Team = () => {
         </div>
       </section>
 
-      {/* How we work */}
+      <section className="section-padding">
+        <div className="container-narrow">
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              { name: "Mikko Kaareva", initials: "MK" },
+              { name: "Jari Virtanen", initials: "JV" },
+              { name: "Timo Lahtinen", initials: "TL" },
+            ].map((m) => (
+              <div key={m.name} className="p-8 text-center">
+                <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6">
+                  <span className="text-2xl font-bold text-primary font-display">{m.initials}</span>
+                </div>
+                <h2 className="text-xl font-display font-bold">{m.name}</h2>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="section-padding bg-section-alt">
         <div className="container-narrow max-w-3xl text-center">
           <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">Työskentelytapamme</h2>
