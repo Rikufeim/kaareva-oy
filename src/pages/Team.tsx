@@ -5,19 +5,19 @@ const team = [
   {
     name: "Mikko Kaareva",
     role: "Toimitusjohtaja / Vastaava työnjohtaja",
-    desc: "Mikko on Kaarevan perustaja ja sielu. Yli 15 vuoden kokemus rakennusalalta takaa, että jokainen projekti etenee suunnitelman mukaan. Mikko vastaa asiakassuhteista, tarjouslaskennasta ja työnjohdosta.",
+    
     initials: "MK",
   },
   {
     name: "Jari Virtanen",
     role: "Kirvesmies / Rakennusammattilainen",
-    desc: "Jari on kokenut kirvesmies, jonka käsissä puutavara taipuu millintarkkaan mittatilaustyöhön. Hän vastaa rakennetyöistä ja varmistaa, että jokainen yksityiskohta on viimeistelty.",
+    
     initials: "JV",
   },
   {
     name: "Timo Lahtinen",
     role: "Rakennusammattilainen",
-    desc: "Timo on monipuolinen osaaja, joka hallitsee niin perustus-, runko- kuin sisävalmistustyöt. Hänen positiivinen asenteensa ja huolellisuutensa näkyvät jokaisessa kohteessa.",
+    
     initials: "TL",
   },
 ];
@@ -46,7 +46,7 @@ const Team = () => {
                 </div>
                 <h2 className="text-xl font-display font-bold mb-1">{m.name}</h2>
                 <p className="text-primary text-sm font-semibold mb-4">{m.role}</p>
-                <p className="text-muted-foreground text-sm leading-relaxed">{m.desc}</p>
+                
               </div>
             ))}
           </div>
