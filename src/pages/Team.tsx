@@ -4,19 +4,19 @@ import Layout from "@/components/layout/Layout";
 const team = [
   {
     name: "Mikko Kaareva",
-    role: "Toimitusjohtaja / Vastaava työnjohtaja",
+    
     
     initials: "MK",
   },
   {
     name: "Jari Virtanen",
-    role: "Kirvesmies / Rakennusammattilainen",
+    
     
     initials: "JV",
   },
   {
     name: "Timo Lahtinen",
-    role: "Rakennusammattilainen",
+    
     
     initials: "TL",
   },
@@ -45,7 +45,7 @@ const Team = () => {
                   <span className="text-2xl font-bold text-primary font-display">{m.initials}</span>
                 </div>
                 <h2 className="text-xl font-display font-bold mb-1">{m.name}</h2>
-                <p className="text-primary text-sm font-semibold mb-4">{m.role}</p>
+                
                 
               </div>
             ))}
