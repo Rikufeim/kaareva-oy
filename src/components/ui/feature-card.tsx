@@ -85,8 +85,7 @@ export const FeatureCard = ({
 
   const imageBlock = (
     <div className="flex-shrink-0 w-full md:w-[45%] min-h-[200px] md:min-h-[280px] flex items-center justify-center p-8 relative bg-muted rounded-xl border border-border">
-      {graphic === "house" ? <IsometricHouseGraphic /> : <IsometricRenovationGraphic />}
-      <span className="absolute inset-0 flex items-center justify-center text-muted-foreground text-lg font-medium pointer-events-none">
+      <span className="text-muted-foreground text-lg font-medium">
         kuva tähän
       </span>
     </div>
