@@ -42,7 +42,7 @@ export function AnimatedSocialIcons({
           )}
           onClick={() => setActive(!active)}
           animate={{ rotate: active ? 45 : 0 }}
-          transition={{ type: "ease-in", duration: 0.5 }}
+          transition={{ ease: "easeIn", duration: 0.5 }}
         >
           <Plus size={iconSize} strokeWidth={3} className="text-white" />
         </motion.button>
@@ -53,7 +53,7 @@ export function AnimatedSocialIcons({
             x: active ? 0 : 60,
             opacity: active ? 1 : 0,
           }}
-          transition={{ type: "ease-in", duration: 0.5 }}
+          transition={{ ease: "easeIn", duration: 0.5 }}
         >
           {icons.map(({ Icon, href, className: iconClassName }, index) => (
             <motion.div
@@ -70,7 +70,7 @@ export function AnimatedSocialIcons({
                 scale: active ? 1 : 0.8,
                 opacity: active ? 1 : 0,
               }}
-              transition={{ type: "ease-in", duration: 0.4 }}
+              transition={{ ease: "easeIn", duration: 0.4 }}
             >
               {href ? (
                 <a
