@@ -69,8 +69,8 @@ const Index = () => {
   return (
     <Layout>
       {/* Hero */}
-      <section className="relative min-h-screen flex items-start justify-start overflow-hidden pt-48 md:pt-56 lg:pt-64 bg-muted">
-        <div className="absolute inset-0 bg-muted" />
+      <section className="relative min-h-screen flex items-start justify-start overflow-hidden pt-48 md:pt-56 lg:pt-64" style={{ backgroundColor: "hsl(0 0% 15%)" }}>
+        <div className="absolute inset-0" style={{ backgroundColor: "hsl(0 0% 15%)" }} />
         <div className="relative z-10 container-narrow px-4 md:px-8 text-left ml-4 md:ml-8 mr-auto">
           <h1 className="text-2xl md:text-4xl lg:text-5xl font-display font-bold text-foreground leading-tight mb-4 animate-fade-in" style={{ animationDelay: "0.15s" }}>
             <span>Rakennamme unelmiesi kodin</span>
